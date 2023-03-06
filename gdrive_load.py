@@ -19,7 +19,7 @@ with open('large_file.csv', 'r') as file:
     reader = csv.reader(file)
     header = next(reader)
 
-    # loop through the rows in the file and create chunks
+# loop through the rows in the file and create chunks
     chunk_number = 1
     current_chunk_size = 0
     current_chunk_data = []
@@ -27,7 +27,7 @@ with open('large_file.csv', 'r') as file:
         current_chunk_data.append(row)
         current_chunk_size += 1
 
-        # if the chunk size is reached, create a new file and upload it to Google Drive
+# if the chunk size is reached, create a new file and upload it to Google Drive
         if current_chunk_size == chunk_size:
             # create a new file in Google Drive
             file_name = f'chunk_{chunk_number}.csv'
@@ -35,19 +35,19 @@ with open('large_file.csv', 'r') as file:
             file_drive = drive.CreateFile(file_metadata)
             file_drive.Upload()
 
-            # write the chunk data to a CSV file and upload it to Google Drive
+# write the chunk data to a CSV file and upload it to Google Drive
             with open(file_name, 'w', newline='') as chunk_file:
                 writer = csv.writer(chunk_file)
                 writer.writerow(header)
                 writer.writerows(current_chunk_data)
             chunk_file.close()
 
-            # reset the chunk variables for the next chunk
+# reset the chunk variables for the next chunk
             chunk_number += 1
             current_chunk_size = 0
             current_chunk_data = []
 
-    # upload the final chunk (if there are any remaining rows)
+# upload the final chunk (if there are any remaining rows)
     if current_chunk_size > 0:
         # create a new file in Google Drive
         file_name = f'chunk_{chunk_number}.csv'
@@ -55,7 +55,7 @@ with open('large_file.csv', 'r') as file:
         file_drive = drive.CreateFile(file_metadata)
         file_drive.Upload()
 
-        # write the chunk data to a CSV file and upload it to Google Drive
+# write the chunk data to a CSV file and upload it to Google Drive
         with open(file_name, 'w', newline='') as chunk_file:
             writer = csv.writer(chunk_file)
             writer.writerow(header)
@@ -63,3 +63,14 @@ with open('large_file.csv', 'r') as file:
         chunk_file.close()
 
 print("Chunks uploaded successfully!")
+
+
+
+"""
+This is the utility to upload event's registration files by volunteers
+
+Before uploading files, get the details of folder id and update this file accordingly.
+
+sphoorthikutumbam-telangana.org
+
+"""
