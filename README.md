@@ -15,6 +15,11 @@ Get our channel's Videos/Views/Likes <br>[youtube_vws_lks.py](https://github.com
 
 > Pending : write to CSV; Load to gdrive -> DataStudio
 
+--- 
+
+Send messages from a csv to whatsapp contacts <br>
+[whatsapp.py](https://github.com/srisreedhar/utilities/blob/master/whatsapp.py) 
+
 
 
 
